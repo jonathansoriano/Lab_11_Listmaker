@@ -6,35 +6,29 @@ public class ArrayListsHomework {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        boolean done = false;
         boolean doneResponse = false;
         String userChoice = "";
         int deleteInput = 0;
 
             while (!doneResponse){
                 userChoice = SafeInput.getRegExString(in, "Select from Menu [A, D, P, Q]", "[AaDdPpQq]");
-                done = false;
-                do {
+
                     if (userChoice.equalsIgnoreCase("a")) {
                         addItem(in, "What item would you like to add to the list?");
                         displayArrayList();
-                        done = true;
                     }
                     if (userChoice.equalsIgnoreCase("d")) {
                         numItemList();
                         deleteInput = SafeInput.getRangedInt(in, "What item from the list would you like to delete", 1, randomList.size()); // "high" is Arraylist.size since we don't know how many items will be in list.
                         deleteItem(deleteInput);
-                        done = true;
                     }
                     if (userChoice.equalsIgnoreCase("p")){
                         displayArrayList();
-                        done = true;
                     }
                     if (userChoice.equalsIgnoreCase("q")){
-                        done = true;
                         doneResponse= SafeInput.getYNConfirm(in, "Are you sure you want to Quit?");
                     }
-                } while (!done);
+
 
             }
 
@@ -43,7 +37,7 @@ public class ArrayListsHomework {
 
     } // <------ end of Main Method
 
-    // Private methods since these are one time use methods. 
+    // Private methods since these are one time use methods.
     private static void displayArrayList (){ //Print Method
         for (String x : randomList) // enhanced for-loop that goes through all of arraylist
             System.out.println(x); // prints all the items in the arraylist
